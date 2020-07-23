@@ -1,0 +1,54 @@
+.pageHeading {
+    position: absolute;
+    left: 7rem;
+    width: calc(100% - 7rem);
+    height: 6rem;
+    padding-left: 3rem;
+    font-size: 1.8rem;
+    text-align: left;
+    line-height: 6rem;
+
+    display: block;
+    margin: 0;
+    font-family: "montserratregular", sans-serif;
+    font-weight: 300;
+    text-transform: uppercase;
+    color: #4592b0;
+    border-bottom: #fff 1px solid;
+    transition: all 0.3s ease-in-out;
+
+    &.expanded {
+        left: 24rem;
+        width: calc(100% - 24rem);
+    }
+}
+
+.main {
+    position: absolute;
+    display: block;
+    top: 0;
+    left: 7rem;
+    width: calc(100% - 7rem);
+    height: 100%;
+    padding: 2rem;
+    transition: all 0.3s ease-in-out;
+
+    &.expanded {
+        width: calc(100% - 24rem);
+        left: 24rem;
+    }
+
+    &.showTitle {
+        top: 6rem;
+        height: calc(100% - 6rem);
+    }
+}
+
+.content {
+    position: relative;
+    height: 100%;
+    padding: 0;
+    background-color: #fff;
+    border: 1px solid #b6bfc9;
+    border-radius: .6rem;
+}

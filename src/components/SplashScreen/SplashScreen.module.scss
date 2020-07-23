@@ -1,0 +1,65 @@
+.splashContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(-45deg, #196480, #0c3450);
+}
+
+.logoContainer {
+    position: absolute;
+    top: 5vh;
+    left: 4vw;
+    margin: 3rem 1rem;
+}
+
+.logo {
+    position: absolute;
+    top: 5vh;
+    left: 4vw;
+    width: 20rem;
+    height: 10rem;
+    margin: 3rem 1rem;
+
+}
+
+.headingContainer {
+    width: 50rem;
+    max-height: 100vh;
+    padding: 1rem;
+    overflow-x: hidden;
+    overflow-y: auto;
+    transition: all .5s;
+    text-align: center;
+}
+
+.heading {
+    position: relative;
+    margin-bottom: 0;
+    padding-left: 4.2rem;
+    font-size: 2.2rem;
+    font-weight: normal;
+    color: #91e1f3;
+
+    &::after {
+        content: '';
+        display: block;
+        position: absolute;
+        top: .5rem;
+        left: 0;
+        width: 3.3rem;
+        height: 1.7rem;
+        background-size: 3.3rem 1.7rem;
+    }
+}
+
+.subHeading {
+    @extend .heading;
+    color: #ffffff;
+    font-size: 1.7rem;
+    font-weight: normal;
+}
+
+.childContainer {
+    @extend .heading;
+}

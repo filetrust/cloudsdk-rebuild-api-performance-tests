@@ -1,0 +1,30 @@
+.button {
+    display: inline-block;
+    width: auto;
+    margin: 2rem 1rem 0;
+    padding: 0.5rem;
+    font-size: 1.4rem;
+    line-height: 3.2rem;
+    text-decoration: none;
+    text-align: center;
+    text-transform: uppercase;
+    background-color: transparent;
+    color: #fff;
+    border: #6697a6 2px solid;
+    border-radius: .3rem;
+    transition: all .3s;
+    cursor: pointer;
+  
+    &:hover {
+      box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .15);
+    }
+  
+  }
+  
+  .link {
+    color: #ffffff;
+    font-size: 1.7rem;
+    font-weight: normal;
+    text-decoration: underline;
+    cursor: pointer;
+  }
