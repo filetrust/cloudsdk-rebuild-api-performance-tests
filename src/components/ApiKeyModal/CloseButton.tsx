@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./GlasswallModal.module.scss";
+import styles from "./ApiKeyModal.module.scss";
 
 export interface CloseButtonProps { closeAction: Function };
 

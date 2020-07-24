@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { HashRouter as Router, Switch, Route, Link } from "react-router-dom";
 import {
     NavBar,
     Nav,
     NavButton,
     ExpandButton,
-    NavSpacer
+    NavSpacer,
+    NavLabel
 } from "./components/GlasswallNav/GlasswallNav";
 import Main from "./components/Main/Main";
-import GlasswallModal from "./components/GlasswallModal/GlasswallModal";
 import SplashScreenView from "./views/SplashScreenView/SplashScreenView";
 import ArchitectureView from "./views/ArchitectureView/ArchitectureView";
 import ResultsView from "./views/ResultsView/ResultsView";
@@ -16,12 +16,13 @@ import RunTestsView from "./views/RunTestsView/RunTestsView";
 
 import styles from "./App.module.scss";
 
+import "./animate.css";
+
 const App = () => {
     const [apiKey, setApiKey] = useState("");
     const [apiKeyConfirmed, setApiKeyConfirmed] = useState(false);
     const [mainTitle, setMainTitle] = useState("");
     const [navExpanded, setNavExpanded] = useState(true);
-    const [modalIsOpen, setModalIsOpen] = useState(false);
 
     const submitApiKey = async e => {
         e.preventDefault();
@@ -53,15 +54,16 @@ const App = () => {
 
                                 <NavSpacer />
 
-                                <Link to="/results">
+
+                                <NavLabel label="FileRebuildPerformanceTest" />
+                                <Link to="/filerebuilderformancetest/runtest">
                                     <NavButton>
-                                        Test Results
+                                        Run
                                     </NavButton>
                                 </Link>
-
-                                <Link to="/runtest">
+                                <Link to="/filerebuilderformancetest/results">
                                     <NavButton>
-                                        Run a Test
+                                        Test Results
                                     </NavButton>
                                 </Link>
                             </Nav>
@@ -80,21 +82,25 @@ const App = () => {
                         <Main expanded={navExpanded} showTitle title={mainTitle}>
                             <Switch>
                                 <Route exact path="/">
-                                    <ArchitectureView onLoad={setMainTitle}/>
+                                    <ArchitectureView onLoad={setMainTitle} />
                                 </Route>
 
-                                <Route path="/results">
-                                    <ResultsView onLoad={setMainTitle} apiKey={apiKey} />
+                                <Route path="/filerebuilderformancetest/results">
+                                    <ResultsView
+                                        onLoad={setMainTitle}
+                                        apiKey={apiKey}
+                                        updateApiKey={setApiKey} />
                                 </Route>
 
-                                <Route path="/runtest">
-                                    <RunTestsView onLoad={setMainTitle} />
+                                <Route path="/filerebuilderformancetest/runtest">
+                                    <RunTestsView
+                                        onLoad={setMainTitle}
+                                        apiKey={apiKey}
+                                        updateApiKey={setApiKey} />
                                 </Route>
 
                             </Switch>
                         </Main>
-
-                        <GlasswallModal isOpen={modalIsOpen} onCloseAction={() => setModalIsOpen(false)} />
                     </Router>
                 }
             </div>
