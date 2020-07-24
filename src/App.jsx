@@ -69,9 +69,11 @@ const App = () => {
                             </Nav>
 
                             <Nav expanded={navExpanded} bottom>
-                                <NavButton clickHandler={() => setApiKeyConfirmed(false)}>
-                                    Logout
-                                </NavButton>
+                                <Link to="/">
+                                    <NavButton clickHandler={() => setApiKeyConfirmed(false)}>
+                                        Logout
+                                    </NavButton>
+                                </Link>
                             </Nav>
 
                             <ExpandButton
