@@ -1,7 +1,9 @@
 # mvp-rebuild-performance-tests
 A Minimum Viable Product for demonstrations of the Automated Performance Tests on Glasswall's Rebuild API.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project was bootstrapped with [Glasswall React App](https://github.com/filetrust/glasswall-react-app).
+
+It's a template for [Create React App](https://github.com/facebook/create-react-app)
 
 ## Available Scripts
 
