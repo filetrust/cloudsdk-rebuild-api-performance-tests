@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { HashRouter as Router, Switch, Route, Link } from "react-router-dom";
 import {
     NavBar,
     Nav,
@@ -20,7 +20,7 @@ import "./animate.css";
 
 const App = () => {
     const [apiKey, setApiKey] = useState("");
-    const [apiKeyConfirmed, setApiKeyConfirmed] = useState(true);
+    const [apiKeyConfirmed, setApiKeyConfirmed] = useState(false);
     const [mainTitle, setMainTitle] = useState("");
     const [navExpanded, setNavExpanded] = useState(true);
 
