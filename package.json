@@ -2,6 +2,7 @@
   "name": "mvp-rebuild-performance-tests",
   "version": "1.0.0",
   "description": "A Minimum Viable Product for demonstrations of the Automated Performance Tests on Glasswall's Rebuild API.",
+  "homepage": "https://ahewitt-glasswall.github.io/mvp-rebuild-performance-tests/",
   "main": "template.json",
   "author": "glasswallsolutions",
   "license": "MIT",
