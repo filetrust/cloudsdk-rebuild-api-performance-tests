@@ -6,7 +6,9 @@ import { ExitHandler } from "react-transition-group/Transition";
 
 import styles from "./Modal.module.scss";
 
-export interface ModalContentsProps { onClickInside: Function, onClickOutside: Function, children: React.ReactNode }
+export interface ModalContentsProps {
+    onClickInside: Function, onClickOutside: Function, children: React.ReactNode
+}
 
 const ModalContents = (props: ModalContentsProps) => {
     return (
@@ -39,7 +41,10 @@ const Modal = (props: ModalProps) => {
             onExited={props.onExitCallback}>
 
             <React.Fragment>
-                {<ModalContents {...props} onClickInside={props.onClickInside} onClickOutside={props.onClickOutside} />}
+                {<ModalContents
+                    {...props}
+                    onClickInside={props.onClickInside}
+                    onClickOutside={props.onClickOutside} />}
             </React.Fragment>
 
         </CSSTransition>,

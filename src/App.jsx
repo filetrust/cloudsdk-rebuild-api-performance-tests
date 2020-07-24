@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-
 import {
     NavBar,
     Nav,
@@ -9,55 +8,67 @@ import {
     NavSpacer
 } from "./components/GlasswallNav/GlasswallNav";
 import Main from "./components/Main/Main";
-import SplashScreenView from "./views/SplashScreenView/SplashScreenView";
 import GlasswallModal from "./components/GlasswallModal/GlasswallModal";
+import SplashScreenView from "./views/SplashScreenView/SplashScreenView";
+import ArchitectureView from "./views/ArchitectureView/ArchitectureView";
+import ResultsView from "./views/ResultsView/ResultsView";
+import RunTestsView from "./views/RunTestsView/RunTestsView";
 
 import styles from "./App.module.scss";
 
 const App = () => {
-    const [showSplashScreen, setShowSplashScreen] = useState(true);
+    const [apiKey, setApiKey] = useState("");
+    const [apiKeyConfirmed, setApiKeyConfirmed] = useState(false);
+    const [mainTitle, setMainTitle] = useState("");
     const [navExpanded, setNavExpanded] = useState(true);
     const [modalIsOpen, setModalIsOpen] = useState(false);
+
+    const submitApiKey = async e => {
+        e.preventDefault();
+        setApiKeyConfirmed(true);
+    };
+
+    useEffect(() => {
+        if (!apiKeyConfirmed) {
+            setApiKey("");
+        }
+    }, [apiKeyConfirmed, setApiKey]);
 
     return (
         <div className={styles.app}>
             <div className={styles.mainContainer}>
-                {showSplashScreen &&
-                    <SplashScreenView hideSplashScreen={() => setShowSplashScreen(false)} />
+                {!apiKeyConfirmed &&
+                    <SplashScreenView changeHandler={setApiKey} submitApiKey={submitApiKey} />
                 }
 
-                {!showSplashScreen &&
+                {apiKeyConfirmed &&
                     <Router>
                         <NavBar expanded={navExpanded} logo>
                             <Nav expanded={navExpanded}>
                                 <Link to="/">
                                     <NavButton>
-                                        Home
+                                        Architecture
                                     </NavButton>
                                 </Link>
 
                                 <NavSpacer />
 
-                                <Link to="/about">
+                                <Link to="/results">
                                     <NavButton>
-                                        About
+                                        Test Results
                                     </NavButton>
                                 </Link>
 
-                                <Link to="/contact">
+                                <Link to="/runtest">
                                     <NavButton>
-                                        Contact
+                                        Run a Test
                                     </NavButton>
                                 </Link>
                             </Nav>
 
                             <Nav expanded={navExpanded} bottom>
-                                <NavButton clickHandler={() => setModalIsOpen(true)}>
-                                    Modal
-                                </NavButton>
-
-                                <NavButton clickHandler={() => setShowSplashScreen(true)}>
-                                    Back
+                                <NavButton clickHandler={() => setApiKeyConfirmed(false)}>
+                                    Logout
                                 </NavButton>
                             </Nav>
 
@@ -66,24 +77,24 @@ const App = () => {
                                 clickHandler={() => setNavExpanded(!navExpanded)} />
                         </NavBar>
 
-                        <Main expanded={navExpanded} showTitle title="Glasswall React App">
+                        <Main expanded={navExpanded} showTitle title={mainTitle}>
                             <Switch>
                                 <Route exact path="/">
-                                    <div>Home</div>
+                                    <ArchitectureView onLoad={setMainTitle}/>
                                 </Route>
 
-                                <Route path="/about">
-                                    <div>About</div>
+                                <Route path="/results">
+                                    <ResultsView onLoad={setMainTitle} apiKey={apiKey} />
                                 </Route>
 
-                                <Route path="/contact">
-                                    <div>Contact</div>
+                                <Route path="/runtest">
+                                    <RunTestsView onLoad={setMainTitle} />
                                 </Route>
 
                             </Switch>
                         </Main>
 
-                        <GlasswallModal isOpen={modalIsOpen} onCloseAction={() => setModalIsOpen(false)}/>
+                        <GlasswallModal isOpen={modalIsOpen} onCloseAction={() => setModalIsOpen(false)} />
                     </Router>
                 }
             </div>

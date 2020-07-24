@@ -4,22 +4,27 @@ import SplashScreen from "../../components/SplashScreen/SplashScreen";
 
 import styles from "./SplashScreenView.module.scss";
 
-export interface SplashScreenViewProps { hideSplashScreen: Function }
+export interface SplashScreenViewProps { changeHandler: Function, submitApiKey: Function }
 
 const SplashScreenView = (props: SplashScreenViewProps) => {
+
     return (
-        <SplashScreen heading="Glasswall React App" subHeading="Edit src/App.jsx and save to reload.">
-            <div>
-                <p className={styles.link} onClick={() => props.hideSplashScreen()}>Click here to hide the Splash Screen.</p>
-            </div>
+        <SplashScreen heading="Rebuild API" subHeading="Automated Performance Tests">
+            <form>
+                <div>
+                    <input className={styles.input}
+                        type="password"
+                        placeholder="Enter API Key"
+                        onChange={e => props.changeHandler(e.target.value)} required></input>
+                </div>
 
-            <div>
-                <a className={styles.link} href="https://filetrust.github.io/frontend/" target="_blank" rel="noopener noreferrer">Styleguide</a>
-            </div>
+                <div>
+                    <button className={styles.button}
+                        type="submit"
+                        onClick={e => props.submitApiKey(e)}>Submit</button>
+                </div>
+            </form>
 
-            <div style={{paddingTop: "1rem"}}>
-                <a className={styles.link} href="https://github.com/filetrust/glasswall-react-app" target="_blank" rel="noopener noreferrer">Github</a>
-            </div>
         </SplashScreen>
     );
 };

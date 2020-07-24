@@ -1,7 +1,7 @@
 {
-  "name": "glasswall-react-app-local-development",
+  "name": "mvp-rebuild-performance-tests",
   "version": "1.0.0",
-  "description": "A Glasswall template for CRA with a Glasswall NPM library pre-loaded. To enforce a consistent codebase and allow for our frontend styles to come together from pre-packaged NPM modules.",
+  "description": "A Minimum Viable Product for demonstrations of the Automated Performance Tests on Glasswall's Rebuild API.",
   "main": "template.json",
   "author": "glasswallsolutions",
   "license": "MIT",
