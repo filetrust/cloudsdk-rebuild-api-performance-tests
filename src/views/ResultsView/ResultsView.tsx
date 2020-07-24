@@ -34,7 +34,7 @@ const ResultsView = (props: ResultsViewProps) => {
     useEffect(() => {
         props.onLoad("View Test Results");
         getResults()
-    }, [getResults]);
+    }, [getResults, props]);
 
     return (
         <div className={styles.resultsPageContainer}>
