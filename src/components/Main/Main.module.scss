@@ -30,8 +30,7 @@
     left: 7rem;
     width: calc(100% - 7rem);
     height: 100%;
-    padding: 2rem;
-    transition: all 0.3s ease-in-out;
+    padding: 2rem;    
 
     &.expanded {
         width: calc(100% - 24rem);
@@ -51,4 +50,5 @@
     background-color: #fff;
     border: 1px solid #b6bfc9;
     border-radius: .6rem;
+    transition: all 0.3s ease-in-out;
 }

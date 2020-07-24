@@ -1,9 +1,9 @@
 import React from "react";
-import styles from "./GlasswallModal.module.scss";
+import styles from "./ApiKeyModal.module.scss";
 
 function Header() {
     return <header className={styles.header}>
-               <h1>Test Modal</h1>
+               <h1>API Key</h1>
            </header>;
 }
 

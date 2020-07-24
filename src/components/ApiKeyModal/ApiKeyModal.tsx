@@ -5,9 +5,14 @@ import Header from "./Header";
 import Body from "./Body";
 import CloseButton from "./CloseButton";
 
-export interface GlasswallModalProps { isOpen: boolean, onClickInside?: Function, onCloseAction: Function };
+export interface ApiKeyModalProps {
+    isOpen: boolean,
+    onClickInside?: Function,
+    onCloseAction: Function,
+    submitFunction: Function
+};
 
-const GlasswallModal = (props: GlasswallModalProps) => {
+const ApiKeyModal = (props: ApiKeyModalProps) => {
     return (
         <Modal
             isOpen={props.isOpen}
@@ -15,11 +20,11 @@ const GlasswallModal = (props: GlasswallModalProps) => {
             onClickOutside={props.onCloseAction}>
 
             <Header />
-            <Body />
-            
-            <CloseButton closeAction={props.onCloseAction}/>                        
+            <Body submitFunction={props.submitFunction}/>
+
+            <CloseButton closeAction={props.onCloseAction} />
         </Modal>
     );
 };
 
-export default GlasswallModal;
+export default ApiKeyModal;

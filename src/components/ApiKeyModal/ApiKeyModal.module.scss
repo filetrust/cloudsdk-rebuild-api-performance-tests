@@ -1,5 +1,6 @@
 .header {
     display: block;
+    text-align: center;
     height: 5rem;
     background-color: #eef0f1;
     padding: 0 2rem;
@@ -10,7 +11,7 @@
 
     h1 {
         float: left;
-        width: calc(100% - 14rem);
+        width: 100%;
         margin: 0;
         padding: 0;
         font-weight: normal;
@@ -22,8 +23,9 @@
 
 .body {
     display: block;
+    text-align: center;
     height: 5rem;
-    padding: 0 2rem;
+    padding: 12rem 2rem 0 2rem;
     color: #0c3450;
     border-radius: .6rem;
     border-bottom-left-radius: 0;
@@ -31,7 +33,7 @@
 
     h1 {
         float: left;
-        width: calc(100% - 14rem);
+        width: calc(100% - 19rem);
         margin: 0;
         padding: 0;
         font-weight: normal;
@@ -39,6 +41,48 @@
         line-height: 5rem;
         font-family: "montserratregular", sans-serif;
     }
+
+    input {
+        width: 33rem;
+        line-height: 4rem;
+        margin-top: 0.6rem;
+        font-family: "robotoregular", sans-serif;
+        outline: none;
+        height: 3rem;
+        padding: 0 1rem;
+        background: rgba(255, 255, 255, .2);
+        border-radius: .6rem;
+        transition: all .3s;
+        font-size: small;
+
+        &::placeholder {
+            color: rgba(255, 255, 255, .4);
+        }
+    }
+
+    button {
+        display: inline-block;
+        width: 7rem;
+        margin: 2rem 1rem 0;
+        font-size: 1rem;
+        line-height: 2.2rem;
+        text-decoration: none;
+        text-align: center;
+        text-transform: uppercase;
+        background-color: transparent;
+        border: #6697a6 2px solid;
+        border-radius: .3rem;
+        transition: all .3s;
+        cursor: pointer;
+
+        &:hover {
+            background-color: #008fbbad;
+            border: white 2px solid;
+            color: white;
+        }
+
+    }
+
 }
 
 .close {
