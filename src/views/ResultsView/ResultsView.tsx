@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 
 import styles from "./ResultsView.module.scss";
 
@@ -8,7 +8,7 @@ const ResultsView = (props: ResultsViewProps) => {
     const getResultsUrl = "https://cqxec6akld.execute-api.eu-west-1.amazonaws.com/prod/filerebuildperformancetest/getresults";
     const [results, setResults] = useState([]);
 
-    const getResults = async () => {
+    const getResults = useCallback(async () => {
         try {
             const response = await fetch(getResultsUrl, {
                 method: "GET",
@@ -18,9 +18,9 @@ const ResultsView = (props: ResultsViewProps) => {
             });
 
             if (response.ok) {
-                let results = await response.json();
-                results = JSON.parse(results);
-                setResults(results);
+                let resultsObject = await response.json();
+                resultsObject = JSON.parse(resultsObject);
+                setResults(resultsObject);
             }
             else {
                 console.error(response.status);
@@ -29,7 +29,7 @@ const ResultsView = (props: ResultsViewProps) => {
         catch (e) {
             console.error(e);
         }
-    };
+    }, [setResults, props]);
 
     useEffect(() => {
         props.onLoad("View Test Results");
