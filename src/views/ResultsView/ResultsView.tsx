@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useCallback } from "react";
 import ApiKeyModal from "../../components/ApiKeyModal/ApiKeyModal";
+import GlasswallTable from "../../components/GlasswallTable/GlasswallTable";
 
 import styles from "./ResultsView.module.scss";
 
@@ -9,7 +10,12 @@ export interface ResultsViewProps {
     updateApiKey: Function
 }
 
-const useMountEffect = (fun: any) => useEffect(fun, [])
+const useMountEffect = (fun: any) => useEffect(fun, []);
+
+const formatTimestamp = (datetimeString: string) => {
+    let date = new Date(datetimeString);
+    return date.toString();
+};
 
 const ResultsView = (props: ResultsViewProps) => {
     const getResultsUrl = "https://cqxec6akld.execute-api.eu-west-1.amazonaws.com/prod/filerebuildperformancetest/getresults";
@@ -56,10 +62,10 @@ const ResultsView = (props: ResultsViewProps) => {
 
     useMountEffect(() => {
         props.onLoad("FileRebuildPerformanceTest | Results");
-        getResults()
+        getResults();
     });
 
-    const submitNewApiKey = async(newApiKey: string) => {
+    const submitNewApiKey = async (newApiKey: string) => {
         setModalIsOpen(false);
         props.updateApiKey(newApiKey);
         await setLoading(true);
@@ -100,9 +106,11 @@ const ResultsView = (props: ResultsViewProps) => {
                             {results.map(row => {
                                 return (
                                     <div className={styles.resultRow} key={row.timestamp}>
-                                        <div className={styles.timestamp}>{row.timestamp}</div>
+                                        <div className={styles.timestamp}>
+                                            {formatTimestamp(row.timestamp)}
+                                        </div>
 
-                                        <table>
+                                        <GlasswallTable>
                                             <thead>
                                                 <tr>
                                                     <th>Filename</th>
@@ -132,7 +140,7 @@ const ResultsView = (props: ResultsViewProps) => {
                                                 })
                                                 }
                                             </tbody>
-                                        </table>
+                                        </GlasswallTable>
                                     </div>
                                 );
                             })}

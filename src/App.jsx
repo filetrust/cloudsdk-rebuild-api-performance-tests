@@ -54,7 +54,6 @@ const App = () => {
 
                                 <NavSpacer />
 
-
                                 <NavLabel label="FileRebuildPerformanceTest" />
                                 <Link to="/filerebuilderformancetest/runtest">
                                     <NavButton>

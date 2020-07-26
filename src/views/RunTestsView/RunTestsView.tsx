@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import RunningTests from "../../components/RunningTests/RunningTests";
 import ApiKeyModal from "../../components/ApiKeyModal/ApiKeyModal";
 
 import styles from "./RunTestsView.module.scss";
@@ -73,7 +74,6 @@ const RunTestsView = (props: RunTestsViewProps) => {
 
             {!loading &&
                 <>
-
                     {apiKeyIsInvalid &&
                         <div>
                             Your API Key is invalid.
@@ -84,7 +84,6 @@ const RunTestsView = (props: RunTestsViewProps) => {
                         </div>
                     }
 
-
                     <h2>
                         File Rebuild Performance Test <span className={styles.newTestContainer}>
                             <svg className={styles.newTest} onClick={() => runNewTest()}></svg>
@@ -92,7 +91,7 @@ const RunTestsView = (props: RunTestsViewProps) => {
                     </h2>
 
                     <div className={styles.runningTests}>
-                        <h2>No Tests Running</h2>
+                        <RunningTests apiKey={props.apiKey}/>
                     </div>
                 </>
             }
