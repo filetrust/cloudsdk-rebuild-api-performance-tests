@@ -11,8 +11,8 @@ import {
 import Main from "./components/Main/Main";
 import SplashScreenView from "./views/SplashScreenView/SplashScreenView";
 import ArchitectureView from "./views/ArchitectureView/ArchitectureView";
-import ResultsView from "./views/ResultsView/ResultsView";
-import RunTestsView from "./views/RunTestsView/RunTestsView";
+import ResultsView from "./views/FileRebuildPerformanceTest/ResultsView/ResultsView";
+import RunTestsView from "./views/FileRebuildPerformanceTest/RunTestsView/RunTestsView";
 
 import styles from "./App.module.scss";
 
@@ -54,7 +54,6 @@ const App = () => {
 
                                 <NavSpacer />
 
-
                                 <NavLabel label="FileRebuildPerformanceTest" />
                                 <Link to="/filerebuilderformancetest/runtest">
                                     <NavButton>
@@ -69,9 +68,11 @@ const App = () => {
                             </Nav>
 
                             <Nav expanded={navExpanded} bottom>
-                                <NavButton clickHandler={() => setApiKeyConfirmed(false)}>
-                                    Logout
-                                </NavButton>
+                                <Link to="/">
+                                    <NavButton clickHandler={() => setApiKeyConfirmed(false)}>
+                                        Logout
+                                    </NavButton>
+                                </Link>
                             </Nav>
 
                             <ExpandButton

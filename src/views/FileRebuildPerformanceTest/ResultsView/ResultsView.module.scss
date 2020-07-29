@@ -4,16 +4,6 @@
     overflow-y: scroll;
 }
 
-.resultRow {
-    padding-bottom: 3rem;
-
-    .timestamp {
-        font-size: 2rem;
-        font-weight: 1rem;
-        padding-bottom: 1rem;
-    }
-}
-
 .buttonLink {
     padding: 0;
     margin: 0;
@@ -22,5 +12,4 @@
     background: none;
     border: none;
     cursor: pointer;
-  }
-  
+}

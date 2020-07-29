@@ -1,33 +1,41 @@
-import React, { useEffect, useState } from "react";
-import ApiKeyModal from "../../components/ApiKeyModal/ApiKeyModal";
+import React, { useState, useEffect, useCallback } from "react";
+import ApiKeyModal from "../../../components/ApiKeyModal/ApiKeyModal";
+import ResultsTable from "./ResultsTable/ResultsTable";
 
-import styles from "./RunTestsView.module.scss";
+import styles from "./ResultsView.module.scss";
 
-export interface RunTestsViewProps { apiKey: string, onLoad: Function, updateApiKey: Function };
+export interface ResultsViewProps {
+    apiKey: string,
+    onLoad: Function,
+    updateApiKey: Function
+}
 
-const RunTestsView = (props: RunTestsViewProps) => {
-    const runTestUrl = "https://cqxec6akld.execute-api.eu-west-1.amazonaws.com/prod/filerebuildperformancetest/starttest";
+const useMountEffect = (fun: any) => useEffect(fun, []);
 
-    const [loading, setLoading] = useState(false);
+
+
+
+const ResultsView = (props: ResultsViewProps) => {
+    const getResultsUrl = "https://cqxec6akld.execute-api.eu-west-1.amazonaws.com/prod/filerebuildperformancetest/getresults";
+
+    const [loading, setLoading] = useState(true);
+    const [results, setResults] = useState([]);
     const [apiKeyIsInvalid, setApiKeyIsInvalid] = useState(false);
     const [modalIsOpen, setModalIsOpen] = useState(false);
 
-    const runNewTest = async () => {
-        await setLoading(true);
-
+    const getResults = useCallback(async (apiKey?) => {
         try {
-            const response = await fetch(runTestUrl, {
-                method: "POST",
+            const response = await fetch(getResultsUrl, {
+                method: "GET",
                 headers: {
-                    "x-api-key": props.apiKey
-                },
-                body: "{}"
+                    "x-api-key": apiKey ?? props.apiKey
+                }
             });
 
             let responseString = await response.json();
 
             if (response.ok) {
-                alert("Success!");
+                setResults(JSON.parse(responseString));
                 setApiKeyIsInvalid(false);
             }
             else {
@@ -48,20 +56,22 @@ const RunTestsView = (props: RunTestsViewProps) => {
         finally {
             setLoading(false);
         }
-    };
+    }, [setResults, props.apiKey, setApiKeyIsInvalid, setLoading]);
 
-    useEffect(() => {
-        props.onLoad("FileRebuildPerformanceTest | Tests");
-    }, [props]);
+    useMountEffect(() => {
+        props.onLoad("FileRebuildPerformanceTest | Results");
+        getResults();
+    });
 
     const submitNewApiKey = async (newApiKey: string) => {
         setModalIsOpen(false);
         props.updateApiKey(newApiKey);
-        //await setLoading(true);
+        await setLoading(true);
+        getResults(newApiKey);
     };
 
     return (
-        <div className={styles.runTestsPageContainer}>
+        <div className={styles.resultsPageContainer}>
             <ApiKeyModal
                 isOpen={modalIsOpen}
                 onCloseAction={() => setModalIsOpen(false)}
@@ -73,7 +83,6 @@ const RunTestsView = (props: RunTestsViewProps) => {
 
             {!loading &&
                 <>
-
                     {apiKeyIsInvalid &&
                         <div>
                             Your API Key is invalid.
@@ -84,20 +93,13 @@ const RunTestsView = (props: RunTestsViewProps) => {
                         </div>
                     }
 
-
-                    <h2>
-                        File Rebuild Performance Test <span className={styles.newTestContainer}>
-                            <svg className={styles.newTest} onClick={() => runNewTest()}></svg>
-                        </span>
-                    </h2>
-
-                    <div className={styles.runningTests}>
-                        <h2>No Tests Running</h2>
-                    </div>
+                    {!apiKeyIsInvalid &&
+                        <ResultsTable results={results} />
+                    }
                 </>
             }
         </div>
     );
 };
 
-export default RunTestsView;
+export default ResultsView;
