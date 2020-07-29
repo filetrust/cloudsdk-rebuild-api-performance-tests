@@ -20,6 +20,8 @@
 .selected {
     color: hsl(205, 74%, 18%);
     background-color: hsla(0, 0%, 100%, 0.6);
+    box-shadow: #a1b9c4 0rem 0rem 1rem 0rem;
+    border-bottom: none;
 
     &:hover {
         color: hsl(205, 74%, 18%);

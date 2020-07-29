@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback } from "react";
 import ApiKeyModal from "../../../components/ApiKeyModal/ApiKeyModal";
 import ResultsTable from "./ResultsTable/ResultsTable";
 
-import styles from "./ResultsView.module.scss";
+import styles from "./ResultsTableView.module.scss";
 
 export interface ResultsViewProps {
     apiKey: string,
@@ -11,9 +11,6 @@ export interface ResultsViewProps {
 }
 
 const useMountEffect = (fun: any) => useEffect(fun, []);
-
-
-
 
 const ResultsView = (props: ResultsViewProps) => {
     const getResultsUrl = "https://cqxec6akld.execute-api.eu-west-1.amazonaws.com/prod/filerebuildperformancetest/getresults";
@@ -59,7 +56,7 @@ const ResultsView = (props: ResultsViewProps) => {
     }, [setResults, props.apiKey, setApiKeyIsInvalid, setLoading]);
 
     useMountEffect(() => {
-        props.onLoad("FileRebuildPerformanceTest | Results");
+        props.onLoad("FileRebuildPerformanceTest | Results Table", "/filerebuilderformancetest/results/table");
         getResults();
     });
 

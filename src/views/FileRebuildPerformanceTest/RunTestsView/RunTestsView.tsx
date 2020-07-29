@@ -29,7 +29,6 @@ const RunTestsView = (props: RunTestsViewProps) => {
             let responseString = await response.json();
 
             if (response.ok) {
-                alert("Success!");
                 setApiKeyIsInvalid(false);
             }
             else {
@@ -53,13 +52,12 @@ const RunTestsView = (props: RunTestsViewProps) => {
     };
 
     useEffect(() => {
-        props.onLoad("FileRebuildPerformanceTest | Tests");
+        props.onLoad("FileRebuildPerformanceTest | Tests", "/filerebuilderformancetest/runtest");
     }, [props]);
 
     const submitNewApiKey = async (newApiKey: string) => {
         setModalIsOpen(false);
         props.updateApiKey(newApiKey);
-        //await setLoading(true);
     };
 
     return (

@@ -5,7 +5,7 @@ export interface ArchitectureViewProps { onLoad: Function }
 const ArchitectureView = (props: ArchitectureViewProps) => {    
 
     useEffect(() => {
-        props.onLoad("Architecture");
+        props.onLoad("Architecture", "Architecture");
     });
 
     return <div>Architecture</div>
