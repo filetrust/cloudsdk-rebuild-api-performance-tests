@@ -39,7 +39,7 @@ const RunningTests = (props: RunningTestsProps) => {
         finally {
             setLoading(false);
         }
-    }, [setTests, props.apiKey, setLoading]);
+    }, [setTests, props, setLoading]);
 
     useMountEffect(() => {
         getTests();
