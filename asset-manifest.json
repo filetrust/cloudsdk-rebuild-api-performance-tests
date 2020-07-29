@@ -1,23 +1,23 @@
 {
   "files": {
-    "main.css": "/mvp-rebuild-performance-tests/static/css/main.576978c2.chunk.css",
-    "main.js": "/mvp-rebuild-performance-tests/static/js/main.88114b7a.chunk.js",
-    "main.js.map": "/mvp-rebuild-performance-tests/static/js/main.88114b7a.chunk.js.map",
+    "main.css": "/mvp-rebuild-performance-tests/static/css/main.a717bc03.chunk.css",
+    "main.js": "/mvp-rebuild-performance-tests/static/js/main.e163a4ea.chunk.js",
+    "main.js.map": "/mvp-rebuild-performance-tests/static/js/main.e163a4ea.chunk.js.map",
     "runtime-main.js": "/mvp-rebuild-performance-tests/static/js/runtime-main.9df7eef9.js",
     "runtime-main.js.map": "/mvp-rebuild-performance-tests/static/js/runtime-main.9df7eef9.js.map",
-    "static/js/2.d8c59e8e.chunk.js": "/mvp-rebuild-performance-tests/static/js/2.d8c59e8e.chunk.js",
-    "static/js/2.d8c59e8e.chunk.js.map": "/mvp-rebuild-performance-tests/static/js/2.d8c59e8e.chunk.js.map",
+    "static/js/2.ccd2aed8.chunk.js": "/mvp-rebuild-performance-tests/static/js/2.ccd2aed8.chunk.js",
+    "static/js/2.ccd2aed8.chunk.js.map": "/mvp-rebuild-performance-tests/static/js/2.ccd2aed8.chunk.js.map",
     "index.html": "/mvp-rebuild-performance-tests/index.html",
-    "precache-manifest.6b0de2a219943f165af05db087914226.js": "/mvp-rebuild-performance-tests/precache-manifest.6b0de2a219943f165af05db087914226.js",
+    "precache-manifest.c7703c43efb67f7225a1beb778fd35f4.js": "/mvp-rebuild-performance-tests/precache-manifest.c7703c43efb67f7225a1beb778fd35f4.js",
     "service-worker.js": "/mvp-rebuild-performance-tests/service-worker.js",
-    "static/css/main.576978c2.chunk.css.map": "/mvp-rebuild-performance-tests/static/css/main.576978c2.chunk.css.map",
-    "static/js/2.d8c59e8e.chunk.js.LICENSE.txt": "/mvp-rebuild-performance-tests/static/js/2.d8c59e8e.chunk.js.LICENSE.txt",
+    "static/css/main.a717bc03.chunk.css.map": "/mvp-rebuild-performance-tests/static/css/main.a717bc03.chunk.css.map",
+    "static/js/2.ccd2aed8.chunk.js.LICENSE.txt": "/mvp-rebuild-performance-tests/static/js/2.ccd2aed8.chunk.js.LICENSE.txt",
     "static/media/index.scss": "/mvp-rebuild-performance-tests/static/media/roboto-regular-webfont.d96d07c1.woff2"
   },
   "entrypoints": [
     "static/js/runtime-main.9df7eef9.js",
-    "static/js/2.d8c59e8e.chunk.js",
-    "static/css/main.576978c2.chunk.css",
-    "static/js/main.88114b7a.chunk.js"
+    "static/js/2.ccd2aed8.chunk.js",
+    "static/css/main.a717bc03.chunk.css",
+    "static/js/main.e163a4ea.chunk.js"
   ]
 }
