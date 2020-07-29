@@ -2,19 +2,17 @@ import React, { useState, useCallback, useEffect } from "react";
 
 import styles from "./RunningTests.module.scss";
 
-export interface RunningTestsProps { apiKey: string };
+export interface RunningTestsProps { apiKey: string, url: string };
 
 const useMountEffect = (fun: any) => useEffect(fun, []);
 
 const RunningTests = (props: RunningTestsProps) => {
-    const getRunningTestsUrl = "https://cqxec6akld.execute-api.eu-west-1.amazonaws.com/prod/filerebuildperformancetest/getrunningtests";
-
     const [tests, setTests] = useState([]);
     const [loading, setLoading] = useState(true);
 
     const getTests = useCallback(async (apiKey?: string) => {
         try {
-            const response = await fetch(getRunningTestsUrl, {
+            const response = await fetch(props.url, {
                 method: "GET",
                 headers: {
                     "x-api-key": apiKey ?? props.apiKey

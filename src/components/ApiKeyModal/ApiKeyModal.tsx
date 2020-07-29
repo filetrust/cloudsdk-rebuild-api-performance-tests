@@ -1,5 +1,5 @@
 import React from "react";
-import Modal from "../common/Modal/Modal";
+import Modal from "../Modal/Modal";
 
 import Header from "./Header";
 import Body from "./Body";
