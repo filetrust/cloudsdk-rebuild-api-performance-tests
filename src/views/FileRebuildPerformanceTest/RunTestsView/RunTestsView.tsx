@@ -84,7 +84,7 @@ const RunTestsView = (props: RunTestsViewProps) => {
                     }
 
                     <h2>
-                        File Rebuild Performance Test <span className={styles.newTestContainer}>
+                        Start New Test <span className={styles.newTestContainer}>
                             <svg className={styles.newTest} onClick={() => runNewTest()}></svg>
                         </span>
                     </h2>

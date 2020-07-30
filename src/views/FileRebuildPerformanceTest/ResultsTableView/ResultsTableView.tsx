@@ -1,6 +1,7 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useCallback } from "react";
 import ApiKeyModal from "../../../components/ApiKeyModal/ApiKeyModal";
 import ResultsTable from "./ResultsTable/ResultsTable";
+import useMountEffect from "../../../components/useMountEffect";
 
 import styles from "./ResultsTableView.module.scss";
 
@@ -9,8 +10,6 @@ export interface ResultsViewProps {
     onLoad: Function,
     updateApiKey: Function
 }
-
-const useMountEffect = (fun: any) => useEffect(fun, []);
 
 const ResultsView = (props: ResultsViewProps) => {
     const getResultsUrl = "https://cqxec6akld.execute-api.eu-west-1.amazonaws.com/prod/filerebuildperformancetest/getresults";

@@ -72,7 +72,7 @@
         margin: 0;
     }
 
-    >   div {
+    >div {
         padding: 1.8rem;
     }
 
@@ -91,7 +91,7 @@
     table {
         border: 1px solid black;
         margin: 2rem 0 !important;
-        border-collapse: collapse; 
+        border-collapse: collapse;
 
         th {
             padding: 8px;
@@ -99,12 +99,13 @@
         }
 
         td {
-            border: 1px solid black; 
-            padding: 8px;     
+            border: 1px solid black;
+            padding: 8px;
         }
     }
 
-    img, video {
+    img,
+    video {
         margin: 2.6rem 0;
     }
 
@@ -112,4 +113,27 @@
 
 img {
     max-width: 75%;
+}
+
+.refreshRow {
+    min-width: calc(100% - 4rem);
+    text-align: right;
+    margin: 2rem;
+
+    .refreshContainer {
+        position: relative;
+
+        .refresh {
+            height: 3.5rem;
+            width: 3.5rem;            
+            transition: transform .25s ease;
+            background: url('data:image/svg+xml;base64,PHN2ZyBhcmlhLWhpZGRlbj0idHJ1ZSIgZm9jdXNhYmxlPSJmYWxzZSIgZGF0YS1wcmVmaXg9ImZhcyIgZGF0YS1pY29uPSJyZWRvLWFsdCIgY2xhc3M9InN2Zy1pbmxpbmUtLWZhIGZhLXJlZG8tYWx0IGZhLXctMTYiIHJvbGU9ImltZyIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2aWV3Qm94PSIwIDAgNTEyIDUxMiI+PHBhdGggZmlsbD0iIzE2NTg3NCIgZD0iTTI1Ni40NTUgOGM2Ni4yNjkuMTE5IDEyNi40MzcgMjYuMjMzIDE3MC44NTkgNjguNjg1bDM1LjcxNS0zNS43MTVDNDc4LjE0OSAyNS44NTEgNTA0IDM2LjU1OSA1MDQgNTcuOTQxVjE5MmMwIDEzLjI1NS0xMC43NDUgMjQtMjQgMjRIMzQ1Ljk0MWMtMjEuMzgyIDAtMzIuMDktMjUuODUxLTE2Ljk3MS00MC45NzFsNDEuNzUtNDEuNzVjLTMwLjg2NC0yOC44OTktNzAuODAxLTQ0LjkwNy0xMTMuMjMtNDUuMjczLTkyLjM5OC0uNzk4LTE3MC4yODMgNzMuOTc3LTE2OS40ODQgMTY5LjQ0MkM4OC43NjQgMzQ4LjAwOSAxNjIuMTg0IDQyNCAyNTYgNDI0YzQxLjEyNyAwIDc5Ljk5Ny0xNC42NzggMTEwLjYyOS00MS41NTYgNC43NDMtNC4xNjEgMTEuOTA2LTMuOTA4IDE2LjM2OC41NTNsMzkuNjYyIDM5LjY2MmM0Ljg3MiA0Ljg3MiA0LjYzMSAxMi44MTUtLjQ4MiAxNy40MzNDMzc4LjIwMiA0NzkuODEzIDMxOS45MjYgNTA0IDI1NiA1MDQgMTE5LjAzNCA1MDQgOC4wMDEgMzkyLjk2NyA4IDI1Ni4wMDIgNy45OTkgMTE5LjE5MyAxMTkuNjQ2IDcuNzU1IDI1Ni40NTUgOHoiPjwvcGF0aD48L3N2Zz4=') no-repeat center center;
+            cursor: pointer;
+
+            &:hover {
+                transform: scale(1.25);
+                transition: transform .25s ease;
+            }
+        }
+    }
 }

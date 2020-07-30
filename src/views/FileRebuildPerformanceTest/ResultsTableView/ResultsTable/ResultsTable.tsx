@@ -1,5 +1,6 @@
 import React from "react";
 import GlasswallTable from "../../../../components/GlasswallTable/GlasswallTable";
+import formatDuration from "../../../../components/formatDuration";
 
 import styles from "./ResultsTable.module.scss";
 
@@ -9,15 +10,6 @@ const formatTimestamp = (datetimeString: string) =>
     new Date(datetimeString).toLocaleString().replace(",", " -");
 
 const formatFileSize = (fileSize: number) => `${Math.floor(fileSize / 1000000)} MB`;
-
-const formatDuration = (duration: string) => {
-    let ms = parseFloat(`0.${duration.split(".")[1]}`);
-    let hms = duration.split(":");
-
-    let seconds = (parseInt(hms[0], 2) * 3600) + (parseInt(hms[1], 2) * 60) + (parseInt(hms[2], 2)) + ms;
-
-    return `${seconds} s`;
-};
 
 const ResultsTable = (props: ResultsTableProps) => {
     return (
@@ -34,10 +26,10 @@ const ResultsTable = (props: ResultsTableProps) => {
                                 <tr>
                                     <th>Filename</th>
                                     <th>File Size</th>
-                                    <th>Detect Filetype</th>
-                                    <th>Rebuild</th>
-                                    <th>Upload</th>
-                                    <th>Download</th>
+                                    <th>Detect Filetype (Seconds)</th>
+                                    <th>Rebuild (Seconds)</th>
+                                    <th>Upload (Seconds)</th>
+                                    <th>Download (Seconds)</th>
                                     <th>Response Time</th>
                                     <th>Engine Version</th>
                                 </tr>
@@ -46,7 +38,7 @@ const ResultsTable = (props: ResultsTableProps) => {
                                 {row.results.map((result: any) => {
                                     return (
                                         <tr key={result.requestId}>
-                                            <td className={styles.filenameCell}>{result.name}</td>
+                                            <td className={styles.filenameCell}>{result.name.replace("Post_FileForProcessing_", "")}</td>
                                             <td>{formatFileSize(result.metricFilesize)}</td>
                                             <td>{formatDuration(result.metricDetect)}</td>
                                             <td>{formatDuration(result.metricRebuild)}</td>
