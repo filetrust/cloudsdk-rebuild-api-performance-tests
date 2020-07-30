@@ -52,32 +52,42 @@ const RunningTests = (props: RunningTestsProps) => {
             }
 
             {!loading &&
-                <table className={styles.table}>
-                    <thead>
-                        <tr>
-                            <th>Timestamp</th>
-                            <th>Status</th>
-                            <th>Task Group</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {tests.length === 0 && 
+                <>
+                    <h2 className={styles.refreshRow}>
+                        <span className={styles.refreshContainer}>
+                            <svg
+                                className={styles.refresh}
+                                onClick={() => { setLoading(true); getTests(); }}>
+                            </svg>
+                        </span>
+                    </h2>
+                    <table className={styles.table}>
+                        <thead>
                             <tr>
-                                <td colSpan={3} style={{textAlign: "center"}}>No Tests Running.</td>
+                                <th>Timestamp</th>
+                                <th>Status</th>
+                                <th>Task Group</th>
                             </tr>
-                        }
-
-                        {tests.map(test => {
-                            return (
-                                <tr key={test.timestamp}>
-                                    <td>{test.timestamp}</td>
-                                    <td>{test.status}</td>
-                                    <td>{test.group}</td>
+                        </thead>
+                        <tbody>
+                            {tests.length === 0 &&
+                                <tr>
+                                    <td colSpan={3} style={{ textAlign: "center" }}>No Tests Running.</td>
                                 </tr>
-                            )
-                        })}
-                    </tbody>
-                </table>
+                            }
+
+                            {tests.map(test => {
+                                return (
+                                    <tr key={test.timestamp}>
+                                        <td>{test.timestamp}</td>
+                                        <td>{test.status}</td>
+                                        <td>{test.group}</td>
+                                    </tr>
+                                )
+                            })}
+                        </tbody>
+                    </table>
+                </>
             }
         </>
     )

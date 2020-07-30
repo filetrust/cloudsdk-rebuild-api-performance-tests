@@ -1,7 +1,6 @@
 .table {
     border-top: 1px solid #4592b0;
-    width: calc(100% - 4rem);
-    margin: 2rem;
+    width: 100%;
     font-size: 1.4rem;
     border-collapse: separate;
     border-spacing: 0;
@@ -17,7 +16,6 @@
 }
 
 th {
-    width: 20rem;
     text-align: left;
     font-weight: normal;
     padding: 10px 0 10px 8px;
@@ -34,17 +32,11 @@ tr {
     }
 }
 
-.td {
-    vertical-align: top;
-    padding: 2rem;
-    line-height: 2.6rem;
-    font-family: 'robotomedium', sans-serif;
-    font-size: 1.5rem;
-    width: 20rem;
-}
-
 td {
     line-height: 3rem;
+    max-width: 11rem;
+    overflow-wrap: break-word;
+    padding: 0 1rem;
 
     p {
         margin-top: 0;

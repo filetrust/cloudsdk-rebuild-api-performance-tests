@@ -11,8 +11,9 @@ import {
 import Main from "./components/Main/Main";
 import SplashScreenView from "./views/SplashScreenView/SplashScreenView";
 import ArchitectureView from "./views/ArchitectureView/ArchitectureView";
-import ResultsView from "./views/FileRebuildPerformanceTest/ResultsView/ResultsView";
+import ResultsTableView from "./views/FileRebuildPerformanceTest/ResultsTableView/ResultsTableView";
 import RunTestsView from "./views/FileRebuildPerformanceTest/RunTestsView/RunTestsView";
+import ResultsGraphView from "./views/FileRebuildPerformanceTest/ResultsGraphView/ResultsGraphView";
 
 import styles from "./App.module.scss";
 
@@ -23,10 +24,16 @@ const App = () => {
     const [apiKeyConfirmed, setApiKeyConfirmed] = useState(false);
     const [mainTitle, setMainTitle] = useState("");
     const [navExpanded, setNavExpanded] = useState(true);
+    const [selectedNavButton, setSelectedNavButton] = useState("");
 
     const submitApiKey = async e => {
         e.preventDefault();
         setApiKeyConfirmed(true);
+    };
+
+    const onLoad = (title, selectedButton) => {
+        setMainTitle(title);
+        setSelectedNavButton(selectedButton);
     };
 
     useEffect(() => {
@@ -47,7 +54,7 @@ const App = () => {
                         <NavBar expanded={navExpanded} logo>
                             <Nav expanded={navExpanded}>
                                 <Link to="/">
-                                    <NavButton>
+                                    <NavButton selected={selectedNavButton === "Architecture"}>
                                         Architecture
                                     </NavButton>
                                 </Link>
@@ -56,13 +63,18 @@ const App = () => {
 
                                 <NavLabel label="FileRebuildPerformanceTest" />
                                 <Link to="/filerebuilderformancetest/runtest">
-                                    <NavButton>
+                                    <NavButton selected={selectedNavButton === "/filerebuilderformancetest/runtest"}>
                                         Run
                                     </NavButton>
                                 </Link>
-                                <Link to="/filerebuilderformancetest/results">
-                                    <NavButton>
-                                        Test Results
+                                <Link to="/filerebuilderformancetest/results/table">
+                                    <NavButton selected={selectedNavButton === "/filerebuilderformancetest/results/table"}>
+                                        Results Table
+                                    </NavButton>
+                                </Link>
+                                <Link to="/filerebuilderformancetest/results/graph">
+                                    <NavButton selected={selectedNavButton === "/filerebuilderformancetest/results/graph"}>
+                                        Results Graph
                                     </NavButton>
                                 </Link>
                             </Nav>
@@ -83,23 +95,29 @@ const App = () => {
                         <Main expanded={navExpanded} showTitle title={mainTitle}>
                             <Switch>
                                 <Route exact path="/">
-                                    <ArchitectureView onLoad={setMainTitle} />
-                                </Route>
-
-                                <Route path="/filerebuilderformancetest/results">
-                                    <ResultsView
-                                        onLoad={setMainTitle}
-                                        apiKey={apiKey}
-                                        updateApiKey={setApiKey} />
+                                    <ArchitectureView onLoad={onLoad} />
                                 </Route>
 
                                 <Route path="/filerebuilderformancetest/runtest">
                                     <RunTestsView
-                                        onLoad={setMainTitle}
+                                        onLoad={onLoad}
                                         apiKey={apiKey}
                                         updateApiKey={setApiKey} />
                                 </Route>
 
+                                <Route path="/filerebuilderformancetest/results/table">
+                                    <ResultsTableView
+                                        onLoad={onLoad}
+                                        apiKey={apiKey}
+                                        updateApiKey={setApiKey} />
+                                </Route>
+
+                                <Route path="/filerebuilderformancetest/results/graph">
+                                    <ResultsGraphView
+                                        onLoad={onLoad}
+                                        apiKey={apiKey}
+                                        updateApiKey={setApiKey} />
+                                </Route>
                             </Switch>
                         </Main>
                     </Router>

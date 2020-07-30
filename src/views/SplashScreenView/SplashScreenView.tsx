@@ -10,18 +10,17 @@ const SplashScreenView = (props: SplashScreenViewProps) => {
 
     return (
         <SplashScreen heading="Rebuild API" subHeading="Automated Performance Tests">
-            <form>
+            <form onSubmit={e => props.submitApiKey(e)}>
                 <div>
                     <input className={styles.input}
                         type="password"
+                        required
                         placeholder="Enter API Key"
-                        onChange={e => props.changeHandler(e.target.value)} required></input>
+                        onChange={e => props.changeHandler(e.target.value)}></input>
                 </div>
 
                 <div>
-                    <button className={styles.button}
-                        type="submit"
-                        onClick={e => props.submitApiKey(e)}>Submit</button>
+                    <button className={styles.button}  type="submit">Submit</button>
                 </div>
             </form>
 

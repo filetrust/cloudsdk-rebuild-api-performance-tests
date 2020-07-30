@@ -1,21 +1,17 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useCallback } from "react";
+import ResultsGraph from "./ResultsGraph/ResultsGraph";
+import useMountEffect from "../../../components/useMountEffect";
 import ApiKeyModal from "../../../components/ApiKeyModal/ApiKeyModal";
-import ResultsTable from "./ResultsTable/ResultsTable";
 
-import styles from "./ResultsView.module.scss";
+import styles from "./ResultsGraphView.module.scss";
 
-export interface ResultsViewProps {
+export interface ResultsGraphViewProps {
     apiKey: string,
     onLoad: Function,
     updateApiKey: Function
-}
+};
 
-const useMountEffect = (fun: any) => useEffect(fun, []);
-
-
-
-
-const ResultsView = (props: ResultsViewProps) => {
+const ResultsGraphView = (props: ResultsGraphViewProps) => {
     const getResultsUrl = "https://cqxec6akld.execute-api.eu-west-1.amazonaws.com/prod/filerebuildperformancetest/getresults";
 
     const [loading, setLoading] = useState(true);
@@ -23,7 +19,7 @@ const ResultsView = (props: ResultsViewProps) => {
     const [apiKeyIsInvalid, setApiKeyIsInvalid] = useState(false);
     const [modalIsOpen, setModalIsOpen] = useState(false);
 
-    const getResults = useCallback(async (apiKey?) => {
+    const getResults = useCallback(async (apiKey?: string) => {
         try {
             const response = await fetch(getResultsUrl, {
                 method: "GET",
@@ -59,7 +55,7 @@ const ResultsView = (props: ResultsViewProps) => {
     }, [setResults, props.apiKey, setApiKeyIsInvalid, setLoading]);
 
     useMountEffect(() => {
-        props.onLoad("FileRebuildPerformanceTest | Results");
+        props.onLoad("FileRebuildPerformanceTest | Results Graph", "/filerebuilderformancetest/results/graph");
         getResults();
     });
 
@@ -94,7 +90,7 @@ const ResultsView = (props: ResultsViewProps) => {
                     }
 
                     {!apiKeyIsInvalid &&
-                        <ResultsTable results={results} />
+                        <ResultsGraph results={results} />
                     }
                 </>
             }
@@ -102,4 +98,4 @@ const ResultsView = (props: ResultsViewProps) => {
     );
 };
 
-export default ResultsView;
+export default ResultsGraphView;
