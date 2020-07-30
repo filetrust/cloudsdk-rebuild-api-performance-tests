@@ -8,7 +8,16 @@ export interface ResultsTableProps { results: Array<any> };
 const formatTimestamp = (datetimeString: string) =>
     new Date(datetimeString).toLocaleString().replace(",", " -");
 
-const formatFileSize = (fileSize: number) => `${Math.floor(fileSize/1000000)} MB`;
+const formatFileSize = (fileSize: number) => `${Math.floor(fileSize / 1000000)} MB`;
+
+const formatDuration = (duration: string) => {
+    let ms = parseFloat(`0.${duration.split(".")[1]}`);
+    let hms = duration.split(":");
+
+    let seconds = (parseInt(hms[0], 2) * 3600) + (parseInt(hms[1], 2) * 60) + (parseInt(hms[2], 2)) + ms;
+
+    return `${seconds} s`;
+};
 
 const ResultsTable = (props: ResultsTableProps) => {
     return (
@@ -37,12 +46,12 @@ const ResultsTable = (props: ResultsTableProps) => {
                                 {row.results.map((result: any) => {
                                     return (
                                         <tr key={result.requestId}>
-                                            <td>{result.name}</td>
+                                            <td className={styles.filenameCell}>{result.name}</td>
                                             <td>{formatFileSize(result.metricFilesize)}</td>
-                                            <td>{result.metricDetect}</td>
-                                            <td>{result.metricRebuild}</td>
-                                            <td>{result.metricUpload}</td>
-                                            <td>{result.metricDownload}</td>
+                                            <td>{formatDuration(result.metricDetect)}</td>
+                                            <td>{formatDuration(result.metricRebuild)}</td>
+                                            <td>{formatDuration(result.metricUpload)}</td>
+                                            <td>{formatDuration(result.metricDownload)}</td>
                                             <td>{result.responseTime}</td>
                                             <td>{result.version}</td>
                                         </tr>
