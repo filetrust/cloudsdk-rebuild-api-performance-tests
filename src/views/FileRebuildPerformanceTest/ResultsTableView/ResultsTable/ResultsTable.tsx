@@ -1,6 +1,6 @@
 import React from "react";
 import GlasswallTable from "../../../../components/GlasswallTable/GlasswallTable";
-import formatDuration from "../../../../components/formatDuration";
+import formatDuration from "../../../../components/formatDuration/formatDuration";
 
 import styles from "./ResultsTable.module.scss";
 

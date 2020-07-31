@@ -1,6 +1,6 @@
 import React from "react";
 import { Bar } from "react-chartjs-2";
-import formatDuration from "../../../../components/formatDuration";
+import formatDuration from "../../../../components/formatDuration/formatDuration";
 
 export interface ResultsGraphProps { results: Array<any> };
 
@@ -89,10 +89,6 @@ const ResultsGraph = (props: ResultsGraphProps) => {
                     id: "y-axis-1",
                     gridLines: {
                         display: false
-                    },
-                    ticks: {
-                        max: 2,
-                        min: 0
                     }
                 },
                 { ...yAxesConfig }
