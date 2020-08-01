@@ -1,8 +1,6 @@
-import { format } from "path";
-
 // duration format: "hh:mm:ss.ms"
 const formatDuration = (duration: string) => {
-    let pattern = "^([0-9][0-9]:[0-9][0-9]:[0-9][0-9]\.[0-9][0-9]*)";
+    let pattern = "^([0-9][0-9]:[0-9][0-9]:[0-9][0-9].[0-9][0-9]*)";
     if (!duration.match(pattern)) {
         console.error(`Duration: '${duration}' did not match pattern (hh:mm:ss.ms)`);
     }
