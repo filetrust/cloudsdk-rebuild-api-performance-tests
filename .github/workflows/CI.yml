@@ -20,3 +20,6 @@ jobs:
    
     - name: Build 🧱
       run: yarn build
+
+    - name: Run Tests 🧪
+      run: yarn test
