@@ -6,13 +6,16 @@ import styles from "./ResultsGraph.module.scss";
 
 export interface ResultsGraphProps { results: Array<any> };
 
+const formatTimestamp = (datetimeString: string) =>
+    new Date(datetimeString).toLocaleString().replace(",", " -");
+
 const ResultsGraph = (props: ResultsGraphProps) => {
     // TODO: set the values to true, and update the checkbox default values
-    const [hideDetect, setHideDetect] = useState(false);
-    const [hideRebuild, setHideRebuild] = useState(false);
-    const [hideUpload, setHideUpload] = useState(false);
-    const [hideDownload, setHideDownload] = useState(false);
-    const [hideResponseTime, setHideResponseTime] = useState(false);
+    const [showDetect, setshowDetect] = useState(false);
+    const [showRebuild, setshowRebuild] = useState(true);
+    const [showUpload, setshowUpload] = useState(false);
+    const [showDownload, setshowDownload] = useState(false);
+    const [showResponseTime, setshowResponseTime] = useState(false);
 
     const labels = props.results[0].results.map((r: any) => r.name.replace("Post_FileForProcessing_", ""));
 
@@ -34,7 +37,7 @@ const ResultsGraph = (props: ResultsGraphProps) => {
                 pointBackgroundColor: "#EC932F",
                 pointHoverBackgroundColor: "#EC932F",
                 yAxisID: "y-axis-2",
-                hidden: hideDetect
+                hidden: !showDetect
             },
             {
                 type: "bar",
@@ -44,7 +47,7 @@ const ResultsGraph = (props: ResultsGraphProps) => {
                 backgroundColor: "#0c3450",
                 hoverBackgroundColor: "#196480",
                 yAxisID: "y-axis-1",
-                hidden: hideRebuild
+                hidden: !showRebuild
             },
             {
                 type: "bar",
@@ -52,7 +55,7 @@ const ResultsGraph = (props: ResultsGraphProps) => {
                 data: uploadData,
                 fill: false,
                 backgroundColor: "#1fb3009e",
-                hidden: hideUpload
+                hidden: !showUpload
             },
             {
                 type: "bar",
@@ -60,7 +63,7 @@ const ResultsGraph = (props: ResultsGraphProps) => {
                 data: downloadData,
                 fill: false,
                 backgroundColor: "#e6e9ea",
-                hidden: hideDownload
+                hidden: !showDownload
             },
             {
                 type: "bar",
@@ -68,7 +71,7 @@ const ResultsGraph = (props: ResultsGraphProps) => {
                 data: responseTimeData,
                 fill: false,
                 backgroundColor: "#00a7ff",
-                hidden: hideResponseTime
+                hidden: !showResponseTime
             }
         ]
     };
@@ -121,24 +124,35 @@ const ResultsGraph = (props: ResultsGraphProps) => {
 
     return (
         <div>
-            <h2>Combined Bar Chart</h2>
-            <p>These results are from the most recent successful test run.</p>
+            <p>These results are from the most recent successful test run: <strong>{formatTimestamp(props.results[0].timestamp)}</strong></p>
 
             <div className={styles.toggleDataContainer}>
-                <div className={styles.toggleOption}>
-                    <label>Detect</label> <input type="checkbox" onChange={() => setHideDetect(!hideDetect)} />
-                </div>
-                <div className={styles.toggleOption}>
-                    <label>Rebuild</label> <input type="checkbox" onChange={() => setHideRebuild(!hideRebuild)} />
-                </div>
-                <div className={styles.toggleOption}>
-                    <label>Upload</label> <input type="checkbox" onChange={() => setHideUpload(!hideUpload)} />
-                </div>
-                <div className={styles.toggleOption}>
-                    <label>Download</label> <input type="checkbox" onChange={() => setHideDownload(!hideDownload)} />
-                </div>
-                <div className={styles.toggleOption}>
-                    <label>Response Time</label> <input type="checkbox" onChange={() => setHideResponseTime(!hideResponseTime)} />
+                <div className={styles.row}>
+                    <div className={styles.column}>
+                        <label>Detect <input type="checkbox"
+                            onChange={() => setshowDetect(!showDetect)}
+                            defaultChecked={showDetect} /></label>
+                    </div>
+                    <div className={styles.column}>
+                        <label>Rebuild <input type="checkbox"
+                            onChange={() => setshowRebuild(!showRebuild)}
+                            defaultChecked={showRebuild} /></label>
+                    </div>
+                    <div className={styles.column}>
+                        <label>Upload <input type="checkbox"
+                            onChange={() => setshowUpload(!showUpload)}
+                            defaultChecked={showUpload} /></label>
+                    </div>
+                    <div className={styles.column}>
+                        <label>Download <input type="checkbox"
+                            onChange={() => setshowDownload(!showDownload)}
+                            defaultChecked={showDownload} /></label>
+                    </div>
+                    <div className={styles.column}>
+                        <label>Response Time <input type="checkbox"
+                            onChange={() => setshowResponseTime(!showResponseTime)}
+                            defaultChecked={showResponseTime} /></label>
+                    </div>
                 </div>
             </div>
 
