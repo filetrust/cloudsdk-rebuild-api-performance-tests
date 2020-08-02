@@ -11,6 +11,6 @@ test("Renders_SplashScreen_Component", () => {
 
 test("Renders_Title", () => {
     const { getByText } = render(<App />);
-    const titleElement = getByText(/Glasswall React App/i);
+    const titleElement = getByText(/Rebuild API/i);
     expect(titleElement).toBeInTheDocument();
 });
