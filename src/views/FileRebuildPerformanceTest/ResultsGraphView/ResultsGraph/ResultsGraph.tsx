@@ -115,6 +115,10 @@ const ResultsGraph = (props: ResultsGraphProps) => {
                     id: "y-axis-1",
                     gridLines: {
                         display: false
+                    },
+                    scaleLabel: {
+                        display: true,
+                        labelString: "Duration (seconds)"
                     }
                 },
                 { ...yAxesConfig }
