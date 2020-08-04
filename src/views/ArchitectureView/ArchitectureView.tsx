@@ -17,7 +17,7 @@ const ArchitectureView = (props: ArchitectureViewProps) => {
             <h3>Executing a Test</h3>
             <img src={ArchitectureImage} alt="Overall architecture for running a test."/>
             <hr />
-            <h3>Docker Image</h3>
+            <h3>Inside the Docker Container</h3>
             <img src={DockerSequenceImage} alt="Sequence diagram for the docker container tests run in." />
         </div>
     );

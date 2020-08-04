@@ -9,6 +9,8 @@ export interface ResultsGraphProps { results: Array<any> };
 const formatTimestamp = (datetimeString: string) =>
     new Date(datetimeString).toLocaleString().replace(",", " -");
 
+const formatFileSize = (fileSize: number) => `${Math.floor(fileSize / 1000000)} MB`;
+
 const ResultsGraph = (props: ResultsGraphProps) => {
     // TODO: set the values to true, and update the checkbox default values
     const [showDetect, setshowDetect] = useState(false);
@@ -17,7 +19,11 @@ const ResultsGraph = (props: ResultsGraphProps) => {
     const [showDownload, setshowDownload] = useState(false);
     const [showResponseTime, setshowResponseTime] = useState(false);
 
-    const labels = props.results[0].results.map((r: any) => r.name.replace("Post_FileForProcessing_", ""));
+    const labels = props.results[0].results.map((r: any) => {
+        let fs = formatFileSize(r.metricFilesize);
+        let label = r.name.replace("Post_FileForProcessing_", "");
+        return `${label} (${fs})`
+    });
 
     const detectData = props.results[0].results.map((r: any) => formatDuration(r.metricDetect));
     const rebuildData = props.results[0].results.map((r: any) => formatDuration(r.metricRebuild));
