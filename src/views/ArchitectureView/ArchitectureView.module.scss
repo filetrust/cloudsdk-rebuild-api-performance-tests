@@ -1,0 +1,15 @@
+.architecturePageContainer {
+    padding: 2rem;
+    height: 100%;
+    overflow-y: scroll;
+    
+    h3 {
+        font-weight: 600;
+        font-size: 2rem;
+        margin-bottom: 0;
+    }
+
+    img {
+        min-width: 80%;
+    }
+}
