@@ -1,23 +1,25 @@
 {
   "files": {
-    "main.css": "/mvp-rebuild-performance-tests/static/css/main.ce3de966.chunk.css",
-    "main.js": "/mvp-rebuild-performance-tests/static/js/main.9ad8a626.chunk.js",
-    "main.js.map": "/mvp-rebuild-performance-tests/static/js/main.9ad8a626.chunk.js.map",
+    "main.css": "/mvp-rebuild-performance-tests/static/css/main.de9c6745.chunk.css",
+    "main.js": "/mvp-rebuild-performance-tests/static/js/main.86b0b6cc.chunk.js",
+    "main.js.map": "/mvp-rebuild-performance-tests/static/js/main.86b0b6cc.chunk.js.map",
     "runtime-main.js": "/mvp-rebuild-performance-tests/static/js/runtime-main.9df7eef9.js",
     "runtime-main.js.map": "/mvp-rebuild-performance-tests/static/js/runtime-main.9df7eef9.js.map",
-    "static/js/2.ec78d393.chunk.js": "/mvp-rebuild-performance-tests/static/js/2.ec78d393.chunk.js",
-    "static/js/2.ec78d393.chunk.js.map": "/mvp-rebuild-performance-tests/static/js/2.ec78d393.chunk.js.map",
+    "static/js/2.277ac17a.chunk.js": "/mvp-rebuild-performance-tests/static/js/2.277ac17a.chunk.js",
+    "static/js/2.277ac17a.chunk.js.map": "/mvp-rebuild-performance-tests/static/js/2.277ac17a.chunk.js.map",
     "index.html": "/mvp-rebuild-performance-tests/index.html",
-    "precache-manifest.37a4326b7b6404e28bc2f365caf5202b.js": "/mvp-rebuild-performance-tests/precache-manifest.37a4326b7b6404e28bc2f365caf5202b.js",
+    "precache-manifest.d8a45f8abf8763fdfb1591b2f21fd415.js": "/mvp-rebuild-performance-tests/precache-manifest.d8a45f8abf8763fdfb1591b2f21fd415.js",
     "service-worker.js": "/mvp-rebuild-performance-tests/service-worker.js",
-    "static/css/main.ce3de966.chunk.css.map": "/mvp-rebuild-performance-tests/static/css/main.ce3de966.chunk.css.map",
-    "static/js/2.ec78d393.chunk.js.LICENSE.txt": "/mvp-rebuild-performance-tests/static/js/2.ec78d393.chunk.js.LICENSE.txt",
+    "static/css/main.de9c6745.chunk.css.map": "/mvp-rebuild-performance-tests/static/css/main.de9c6745.chunk.css.map",
+    "static/js/2.277ac17a.chunk.js.LICENSE.txt": "/mvp-rebuild-performance-tests/static/js/2.277ac17a.chunk.js.LICENSE.txt",
+    "static/media/architecture.png": "/mvp-rebuild-performance-tests/static/media/architecture.4d06c2da.png",
+    "static/media/dockerSequence.png": "/mvp-rebuild-performance-tests/static/media/dockerSequence.d422683c.png",
     "static/media/index.scss": "/mvp-rebuild-performance-tests/static/media/roboto-regular-webfont.d96d07c1.woff2"
   },
   "entrypoints": [
     "static/js/runtime-main.9df7eef9.js",
-    "static/js/2.ec78d393.chunk.js",
-    "static/css/main.ce3de966.chunk.css",
-    "static/js/main.9ad8a626.chunk.js"
+    "static/js/2.277ac17a.chunk.js",
+    "static/css/main.de9c6745.chunk.css",
+    "static/js/main.86b0b6cc.chunk.js"
   ]
 }
