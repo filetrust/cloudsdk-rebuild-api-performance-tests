@@ -30,7 +30,7 @@ const ResultsTable = (props: ResultsTableProps) => {
                                     <th>Rebuild (Seconds)</th>
                                     <th>Upload (Seconds)</th>
                                     <th>Download (Seconds)</th>
-                                    <th>Response Time</th>
+                                    <th>Response Time (ms)</th>
                                     <th>Engine Version</th>
                                 </tr>
                             </thead>
