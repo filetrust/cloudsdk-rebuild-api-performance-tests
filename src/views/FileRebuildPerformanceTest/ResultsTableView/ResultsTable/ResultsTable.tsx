@@ -37,16 +37,27 @@ const ResultsTable = (props: ResultsTableProps) => {
                             <tbody>
                                 {row.results.map((result: any) => {
                                     return (
-                                        <tr key={result.requestId}>
-                                            <td className={styles.filenameCell}>{result.name.replace("Post_FileForProcessing_", "")}</td>
-                                            <td>{formatFileSize(result.metricFilesize)}</td>
-                                            <td>{formatDuration(result.metricDetect)}</td>
-                                            <td>{formatDuration(result.metricRebuild)}</td>
-                                            <td>{formatDuration(result.metricUpload)}</td>
-                                            <td>{formatDuration(result.metricDownload)}</td>
-                                            <td>{result.responseTime}</td>
-                                            <td>{result.version}</td>
-                                        </tr>
+                                        <>
+                                            {parseInt(result.responseCode) === 200 &&
+                                                <tr key={result.requestId}>
+                                                    <td className={styles.filenameCell}>{result.name.replace("Post_FileForProcessing_", "")}</td>
+                                                    <td>{formatFileSize(result.metricFilesize)}</td>
+                                                    <td>{formatDuration(result.metricDetect)}</td>
+                                                    <td>{formatDuration(result.metricRebuild)}</td>
+                                                    <td>{formatDuration(result.metricUpload)}</td>
+                                                    <td>{formatDuration(result.metricDownload)}</td>
+                                                    <td>{result.responseTime}</td>
+                                                    <td>{result.version}</td>
+                                                </tr>
+                                            }
+
+                                            {parseInt(result.responseCode) !== 200 &&
+                                                <tr key={result.requestId} className={styles.failedTestRow}>
+                                                    <td>{result.name.replace("Post_FileForProcessing_", "")}</td>
+                                                    <td colSpan={7}>Error: {result.responseCode}</td>
+                                                </tr>
+                                            }
+                                        </>
                                     );
                                 })
                                 }
