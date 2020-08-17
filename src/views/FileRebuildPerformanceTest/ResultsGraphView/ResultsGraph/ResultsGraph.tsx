@@ -19,17 +19,19 @@ const ResultsGraph = (props: ResultsGraphProps) => {
     const [showDownload, setshowDownload] = useState(false);
     const [showResponseTime, setshowResponseTime] = useState(false);
 
-    const labels = props.results[0].results.map((r: any) => {
+    const filteredResults = props.results[0].results.filter((r: any) => parseInt(r.responseCode) === 200);
+
+    const labels = filteredResults.map((r: any) => {
         let fs = formatFileSize(r.metricFilesize);
         let label = r.name.replace("Post_FileForProcessing_", "");
         return `${label} (${fs})`
     });
 
-    const detectData = props.results[0].results.map((r: any) => formatDuration(r.metricDetect));
-    const rebuildData = props.results[0].results.map((r: any) => formatDuration(r.metricRebuild));
-    const uploadData = props.results[0].results.map((r: any) => formatDuration(r.metricUpload));
-    const downloadData = props.results[0].results.map((r: any) => formatDuration(r.metricDownload));
-    const responseTimeData = props.results[0].results.map((r: any) => r.responseTime / 1000);
+    const detectData = filteredResults.map((r: any) => formatDuration(r.metricDetect));
+    const rebuildData = filteredResults.map((r: any) => formatDuration(r.metricRebuild));
+    const uploadData = filteredResults.map((r: any) => formatDuration(r.metricUpload));
+    const downloadData = filteredResults.map((r: any) => formatDuration(r.metricDownload));
+    const responseTimeData = filteredResults.map((r: any) => r.responseTime / 1000);
 
     const data = {
         datasets: [
