@@ -9,7 +9,7 @@ export interface ResultsTableProps { results: Array<any> };
 const formatTimestamp = (datetimeString: string) =>
     new Date(datetimeString).toLocaleString().replace(",", " -");
 
-const formatFileSize = (fileSize: number) => `${Math.floor(fileSize / 1000000).toFixed(2)} MB`;
+const formatFileSize = (fileSize: number) => `${Math.floor(fileSize / 1000000)} MB`;
 
 const ResultsTable = (props: ResultsTableProps) => {
     return (
