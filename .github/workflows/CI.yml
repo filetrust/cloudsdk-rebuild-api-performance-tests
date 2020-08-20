@@ -7,6 +7,8 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      working-directory: ./gh-pages
     
     steps:
     - uses: actions/checkout@v2
@@ -17,9 +19,12 @@ jobs:
 
     - name: Install Packages ⏳
       run: yarn install
+      working-directory: ${{env.working-directory}}
    
     - name: Build 🧱
       run: yarn build
+      working-directory: ${{env.working-directory}}
 
     - name: Run Tests 🧪
       run: yarn test
+      working-directory: ${{env.working-directory}}

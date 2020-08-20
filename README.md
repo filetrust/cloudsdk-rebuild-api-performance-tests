@@ -1,73 +1,22 @@
-# mvp-rebuild-performance-tests
-A Minimum Viable Product for demonstrations of the Automated Performance Tests on Glasswall's Rebuild API.
+# Rebuild API Performance Tests
+![CI](https://github.com/ahewitt-glasswall/mvp-rebuild-performance-tests/workflows/CI/badge.svg)
+![CD](https://github.com/ahewitt-glasswall/mvp-rebuild-performance-tests/workflows/CD/badge.svg)
 
-This project was bootstrapped with [Glasswall React App](https://github.com/filetrust/glasswall-react-app).
 
-It's a template for [Create React App](https://github.com/facebook/create-react-app)
+A Minimum Viable Product for demonstrations of the Automated Performance Tests on Glasswall's Rebuild API.<br/>
+You can see it live at https://ahewitt-glasswall.github.io/mvp-rebuild-performance-tests/#/<br/>
+Here's the documentation for [Glasswall Rebuild](https://engineering.glasswallsolutions.com/docs/product-descriptions/product-overview)
 
-## Available Scripts
+# Architecture
+## Overall Architecture
+![Overall Architecture Diagram](https://raw.githubusercontent.com/ahewitt-glasswall/mvp-rebuild-performance-tests/master/documents/architecture/architecture.png)
+1. API Request to trigger the startTest lambda function. This function connects to the ECS cluster and kicks off a task. The task, in this case is a docker container with the test script pre-loaded.
+2. The first command running in the docker container is a python script that retrieves a JSON array of file paths from DynamoDB. These file paths correspond to the test files held in S3.
+3. The next step is running the JMeter performance test script. The script retrieves a presigned url from S3, for each of the file paths retrieved from DynamoDB in step 2.
+4. The JMeter script then sends the files through to the Rebuild API, and records the results, along with some metrics from the response header of each request.
+5. The next step is a python script that extracts the results from JMeter (XML) and saves them as JSON.
+6. Finally, the results have been converted to JSON and the last python script uploads them to the results table in DynamoDB, with a timestamp as the partition key.
 
-In the project directory, you can run:
+## Inside the Docker Container
+![Inside the Docker Container - Sequence Diagram](https://raw.githubusercontent.com/ahewitt-glasswall/mvp-rebuild-performance-tests/master/documents/architecture/dockerSequence.png)
 
-### `yarn start`
-
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
-
-### `yarn test`
-
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `yarn build`
-
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
