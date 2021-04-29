@@ -1,0 +1,97 @@
+{
+	"roleName": "filerebuildperformancetest-getResults-role",
+	"policies": [
+	  {
+		"name": "AWSLambdaBasicExecutionRole",
+		"id": "<id>",
+		"type": "managed",
+		"arn": "<arn>",
+		"document": {
+		  "Version": "2012-10-17",
+		  "Statement": [
+			{
+			  "Effect": "Allow",
+			  "Action": [
+				"logs:CreateLogGroup",
+				"logs:CreateLogStream",
+				"logs:PutLogEvents"
+			  ],
+			  "Resource": "*"
+			}
+		  ]
+		}
+	  },
+	  {
+		"name": "filerebuildperformancetest-getResults-policy",
+		"id": "<id>",
+		"type": "managed",
+		"arn": "<arn>",
+		"document": {
+		  "Version": "2012-10-17",
+		  "Statement": [
+			{
+			  "Sid": "VisualEditor0",
+			  "Effect": "Allow",
+			  "Action": [
+				"dynamodb:DescribeTable",
+				"dynamodb:Scan"
+			  ],
+			  "Resource": "<dynamo-db-arn>"
+			},
+			{
+			  "Sid": "VisualEditor1",
+			  "Effect": "Allow",
+			  "Action": "dynamodb:ListTables",
+			  "Resource": "*"
+			}
+		  ]
+		}
+	  }
+	],
+	"resources": {
+	  "logs": {
+		"service": {
+		  "name": "Amazon CloudWatch Logs",
+		  "icon": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCI+CiAgICA8ZyB0cmFuc2Zvcm09InNjYWxlKC44NTMpIj4KICAgICAgICA8ZGVmcz4KICAgICAgICAgICAgPGxpbmVhckdyYWRpZW50IGlkPSJhIiB4MT0iNjE3LjQ3IiB5MT0iLTY3NC41MyIgeDI9IjcyMy41MyIgeTI9Ii01NjguNDciIGdyYWRpZW50VHJhbnNmb3JtPSJyb3RhdGUoLTkwIDY4My41IDI0LjUpIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+CiAgICAgICAgICAgICAgICA8c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiNiMDA4NGQiLz4KICAgICAgICAgICAgICAgIDxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iI2ZmNGY4YiIvPgogICAgICAgICAgICA8L2xpbmVhckdyYWRpZW50PgogICAgICAgIDwvZGVmcz4KICAgICAgICA8cGF0aCBmaWxsPSJ1cmwoI2EpIiBkPSJNMCAwaDc1djc1SDB6Ii8+CiAgICAgICAgPGcgZmlsbD0iI2ZmZiI+CiAgICAgICAgICAgIDxwYXRoIGQ9Ik0zMS41IDQ4aC0xMWE2LjExIDYuMTEgMCAwMS0zLjE0LS45NCAxMC4xOCAxMC4xOCAwIDAxLTQuODYtOC44OUE5LjA5IDkuMDkgMCAwMTE5IDI5di0uNzhhMTMuNyAxMy43IDAgMDE3LjgyLTEyLjA4IDEzLjEyIDEzLjEyIDAgMDExNC43OSAyLjkzIDE1LjA1IDE1LjA1IDAgMDEzIDQuNCA1Ljg2IDUuODYgMCAwMTMuNjgtMS4zYzIuNzIgMCA1Ljc4IDIuMDYgNi4zNCA2LjU4IDIuNTcuNjEgNy44NSAyLjcxIDcuODUgOS41MWE5IDkgMCAwMS00LjczIDguMzlsLTEtMS43NWE3LjA4IDcuMDggMCAwMDMuNy02LjY0YzAtNS44OC00Ljg3LTcuMzQtNy03LjdhMSAxIDAgMDEtLjY1LS40MiAxIDEgMCAwMS0uMTctLjcyYy0uMjktMy42My0yLjQxLTUuMjUtNC40LTUuMjVBNCA0IDAgMDA0NSAyNS44NmExIDEgMCAwMS0uOTUuNCAxIDEgMCAwMS0uNzktLjY2IDEzLjYgMTMuNiAwIDAwLTMuMTQtNS4xMkExMS4xNiAxMS4xNiAwIDAwMjcuNjEgMTggMTEuNzYgMTEuNzYgMCAwMDIxIDI4LjJhMTIuMzQgMTIuMzQgMCAwMC4wOCAxLjM4IDEgMSAwIDAxLS44MSAxLjExIDcuMjQgNy4yNCAwIDAwLTUuNzggNy40OCA4LjEzIDguMTMgMCAwMDMuOTMgNy4yIDQgNCAwIDAwMi4wOC42M2gxMXoiLz4KICAgICAgICAgICAgPHBhdGggZD0iTTYxLjM5IDU0bC03LjEtNy4xM0ExMC42MSAxMC42MSAwIDEwNDkuNDMgNTJsNyA3YTMuNTIgMy41MiAwIDAwMi41IDEgMy40OCAzLjQ4IDAgMDAyLjQ5LTEgMy41MiAzLjUyIDAgMDAtLjAzLTV6TTQ0LjYgNTEuMTdhOC41OSA4LjU5IDAgMTE4LjU5LTguNTkgOC41OSA4LjU5IDAgMDEtOC41OSA4LjU5ek02MCA1Ny41NWExLjU3IDEuNTcgMCAwMS0yLjE2IDBsLTYuNjYtNi42NmExMC40OCAxMC40OCAwIDAwMi4xMi0yLjI0bDYuNyA2Ljc0YTEuNTQgMS41NCAwIDAxMCAyLjE2eiIvPgogICAgICAgICAgICA8cGF0aCBkPSJNNDcuMzUgMzcuOTNsLTEuMTkgMS42MWEzLjM3IDMuMzcgMCAwMC01LjM0IDMuMkEzLjMgMy4zIDAgMDA0Mi4xNSA0NUw0MSA0Ni41NmE1LjM3IDUuMzcgMCAwMTYuMzktOC42M3oiLz4KICAgICAgICA8L2c+CiAgICA8L2c+Cjwvc3ZnPgo="
+		},
+		"statements": [
+		  {
+			"resource": "*",
+			"service": "logs",
+			"effect": "Allow",
+			"action": "logs:CreateLogGroup",
+			"source": {
+			  "index": "0",
+			  "policyName": "AWSLambdaBasicExecutionRole",
+			  "policyType": "managed"
+			}
+		  },
+		  {
+			"resource": "*",
+			"service": "logs",
+			"effect": "Allow",
+			"action": "logs:CreateLogStream",
+			"source": {
+			  "index": "0",
+			  "policyName": "AWSLambdaBasicExecutionRole",
+			  "policyType": "managed"
+			}
+		  },
+		  {
+			"resource": "*",
+			"service": "logs",
+			"effect": "Allow",
+			"action": "logs:PutLogEvents",
+			"source": {
+			  "index": "0",
+			  "policyName": "AWSLambdaBasicExecutionRole",
+			  "policyType": "managed"
+			}
+		  }
+		]
+	  }
+	},
+	"trustedEntities": [
+	  "lambda.amazonaws.com"
+	]
+  }
