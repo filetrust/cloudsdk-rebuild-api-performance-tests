@@ -1,0 +1,121 @@
+{
+	"roleName": "filerebuildperformancetest-getRunningTasks-role",
+	"policies": [
+	  {
+		"name": "AWSLambdaBasicExecutionRole",
+		"id": "<id>",
+		"type": "managed",
+		"arn": "<arn>",
+		"document": {
+		  "Version": "2012-10-17",
+		  "Statement": [
+			{
+			  "Effect": "Allow",
+			  "Action": [
+				"logs:CreateLogGroup",
+				"logs:CreateLogStream",
+				"logs:PutLogEvents"
+			  ],
+			  "Resource": "*"
+			}
+		  ]
+		}
+	  },
+	  {
+		"name": "filerebuildperformancetest-getRunningTasks-policy",
+		"id": "<id>",
+		"type": "managed",
+		"arn": "<arn>",
+		"document": {
+		  "Version": "2012-10-17",
+		  "Statement": [
+			{
+			  "Sid": "VisualEditor0",
+			  "Effect": "Allow",
+			  "Action": [
+				"ecs:ListTasks",
+				"ecs:DescribeTasks"
+			  ],
+			  "Resource": "<ecs-arn>"
+			}
+		  ]
+		}
+	  }
+	],
+	"resources": {
+	  "ecs": {
+		"service": {
+		  "name": "Amazon Elastic Container Service",
+		  "icon": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCI+CiAgICA8ZyB0cmFuc2Zvcm09InNjYWxlKC44NTMpIj4KICAgICAgICA8ZGVmcz4KICAgICAgICAgICAgPGxpbmVhckdyYWRpZW50IGlkPSJhIiB4MT0iMTU4LjA1IiB5MT0iLTExMy40MyIgeDI9IjE1OC4wNSIgeTI9IjM2LjU3IiBncmFkaWVudFRyYW5zZm9ybT0icm90YXRlKC0xMzUgMTEzLjQ5OSAyNC41KSIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPgogICAgICAgICAgICAgICAgPHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjYzg1MTFiIi8+CiAgICAgICAgICAgICAgICA8c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiNmOTAiLz4KICAgICAgICAgICAgPC9saW5lYXJHcmFkaWVudD4KICAgICAgICA8L2RlZnM+CiAgICAgICAgPHBhdGggZmlsbD0idXJsKCNhKSIgZD0iTTAgMGg3NXY3NUgweiIvPgogICAgICAgIDxnIGZpbGw9IiNmZmYiPgogICAgICAgICAgICA8cGF0aCBkPSJNMzcuMjkgNjQuNDRhMSAxIDAgMDEtLjUzLS4xNEwxNCA1MS4xOGExLjA2IDEuMDYgMCAwMS0uNTMtLjkyVjIzLjY4YTEuMDYgMS4wNiAwIDAxLjUzLS45MkwzNC45MyAxMC43YTEgMSAwIDAxMS41Ny45djExLjUxYTEuMDUgMS4wNSAwIDAxLS41Ljg5bC0xMC40NyA2djEzLjk0bDExLjc5IDYuODEgMTAuMzEtNmExIDEgMCAwMTEgMGw5LjkyIDUuN2ExLjA2IDEuMDYgMCAwMS41My45MiAxIDEgMCAwMS0uNTMuOTFsLTIwLjc1IDEyYTEgMSAwIDAxLS41MS4xNnpNMTUuNSA0OS41NGwyMi4zMyAxMi44OUw1NyA1MS4zNWwtOC00LjYxLTEwLjYzIDYuMTRhMS4xMSAxLjExIDAgMDEtMS4wOSAwTDI0IDQ1LjIyYTEuMDUgMS4wNSAwIDAxLS41My0uOTFWMjkuNDZhMSAxIDAgMDEuNTMtLjkxbDEwLjQ3LTZ2LTkuMThsLTE5IDExeiIvPgogICAgICAgICAgICA8cGF0aCBkPSJNNjAuNDQgNDlhMS4xMyAxLjEzIDAgMDEtLjUzLS4xNEw1MCA0My4xM2ExIDEgMCAwMS0uNTMtLjkxVjMwLjExTDM5IDI0LjA3YTEuMDUgMS4wNSAwIDAxLS41My0uOTFWMTEuNjVhMSAxIDAgMDEuNTItLjkgMSAxIDAgMDExIDBMNjEgMjIuODJhMS4wNSAxLjA1IDAgMDEuNTMuOTFWNDcuOWExLjA2IDEuMDYgMCAwMS0uNTMuOTIgMS4xIDEuMSAwIDAxLS41Ni4xOHptLTguOTQtNy40NWw4IDQuNlYyNC40bC0xOS0xMXY5LjEzTDUxIDI4LjYxYTEgMSAwIDAxLjUzLjkxeiIvPgogICAgICAgIDwvZz4KICAgIDwvZz4KPC9zdmc+Cg=="
+		},
+		"statements": [
+		  {
+			"resource": "*",
+			"service": "ecs",
+			"effect": "Allow",
+			"action": "ecs:ListTasks",
+			"source": {
+			  "index": "VisualEditor0",
+			  "policyName": "filerebuildperformancetest-getRunningTasks-policy",
+			  "policyType": "managed"
+			}
+		  },
+		  {
+			"resource": "*",
+			"service": "ecs",
+			"effect": "Allow",
+			"action": "ecs:DescribeTasks",
+			"source": {
+			  "index": "VisualEditor0",
+			  "policyName": "filerebuildperformancetest-getRunningTasks-policy",
+			  "policyType": "managed"
+			}
+		  }
+		]
+	  },
+	  "logs": {
+		"service": {
+		  "name": "Amazon CloudWatch Logs",
+		  "icon": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCI+CiAgICA8ZyB0cmFuc2Zvcm09InNjYWxlKC44NTMpIj4KICAgICAgICA8ZGVmcz4KICAgICAgICAgICAgPGxpbmVhckdyYWRpZW50IGlkPSJhIiB4MT0iNjE3LjQ3IiB5MT0iLTY3NC41MyIgeDI9IjcyMy41MyIgeTI9Ii01NjguNDciIGdyYWRpZW50VHJhbnNmb3JtPSJyb3RhdGUoLTkwIDY4My41IDI0LjUpIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+CiAgICAgICAgICAgICAgICA8c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiNiMDA4NGQiLz4KICAgICAgICAgICAgICAgIDxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iI2ZmNGY4YiIvPgogICAgICAgICAgICA8L2xpbmVhckdyYWRpZW50PgogICAgICAgIDwvZGVmcz4KICAgICAgICA8cGF0aCBmaWxsPSJ1cmwoI2EpIiBkPSJNMCAwaDc1djc1SDB6Ii8+CiAgICAgICAgPGcgZmlsbD0iI2ZmZiI+CiAgICAgICAgICAgIDxwYXRoIGQ9Ik0zMS41IDQ4aC0xMWE2LjExIDYuMTEgMCAwMS0zLjE0LS45NCAxMC4xOCAxMC4xOCAwIDAxLTQuODYtOC44OUE5LjA5IDkuMDkgMCAwMTE5IDI5di0uNzhhMTMuNyAxMy43IDAgMDE3LjgyLTEyLjA4IDEzLjEyIDEzLjEyIDAgMDExNC43OSAyLjkzIDE1LjA1IDE1LjA1IDAgMDEzIDQuNCA1Ljg2IDUuODYgMCAwMTMuNjgtMS4zYzIuNzIgMCA1Ljc4IDIuMDYgNi4zNCA2LjU4IDIuNTcuNjEgNy44NSAyLjcxIDcuODUgOS41MWE5IDkgMCAwMS00LjczIDguMzlsLTEtMS43NWE3LjA4IDcuMDggMCAwMDMuNy02LjY0YzAtNS44OC00Ljg3LTcuMzQtNy03LjdhMSAxIDAgMDEtLjY1LS40MiAxIDEgMCAwMS0uMTctLjcyYy0uMjktMy42My0yLjQxLTUuMjUtNC40LTUuMjVBNCA0IDAgMDA0NSAyNS44NmExIDEgMCAwMS0uOTUuNCAxIDEgMCAwMS0uNzktLjY2IDEzLjYgMTMuNiAwIDAwLTMuMTQtNS4xMkExMS4xNiAxMS4xNiAwIDAwMjcuNjEgMTggMTEuNzYgMTEuNzYgMCAwMDIxIDI4LjJhMTIuMzQgMTIuMzQgMCAwMC4wOCAxLjM4IDEgMSAwIDAxLS44MSAxLjExIDcuMjQgNy4yNCAwIDAwLTUuNzggNy40OCA4LjEzIDguMTMgMCAwMDMuOTMgNy4yIDQgNCAwIDAwMi4wOC42M2gxMXoiLz4KICAgICAgICAgICAgPHBhdGggZD0iTTYxLjM5IDU0bC03LjEtNy4xM0ExMC42MSAxMC42MSAwIDEwNDkuNDMgNTJsNyA3YTMuNTIgMy41MiAwIDAwMi41IDEgMy40OCAzLjQ4IDAgMDAyLjQ5LTEgMy41MiAzLjUyIDAgMDAtLjAzLTV6TTQ0LjYgNTEuMTdhOC41OSA4LjU5IDAgMTE4LjU5LTguNTkgOC41OSA4LjU5IDAgMDEtOC41OSA4LjU5ek02MCA1Ny41NWExLjU3IDEuNTcgMCAwMS0yLjE2IDBsLTYuNjYtNi42NmExMC40OCAxMC40OCAwIDAwMi4xMi0yLjI0bDYuNyA2Ljc0YTEuNTQgMS41NCAwIDAxMCAyLjE2eiIvPgogICAgICAgICAgICA8cGF0aCBkPSJNNDcuMzUgMzcuOTNsLTEuMTkgMS42MWEzLjM3IDMuMzcgMCAwMC01LjM0IDMuMkEzLjMgMy4zIDAgMDA0Mi4xNSA0NUw0MSA0Ni41NmE1LjM3IDUuMzcgMCAwMTYuMzktOC42M3oiLz4KICAgICAgICA8L2c+CiAgICA8L2c+Cjwvc3ZnPgo="
+		},
+		"statements": [
+		  {
+			"resource": "*",
+			"service": "logs",
+			"effect": "Allow",
+			"action": "logs:CreateLogGroup",
+			"source": {
+			  "index": "0",
+			  "policyName": "AWSLambdaBasicExecutionRole",
+			  "policyType": "managed"
+			}
+		  },
+		  {
+			"resource": "*",
+			"service": "logs",
+			"effect": "Allow",
+			"action": "logs:CreateLogStream",
+			"source": {
+			  "index": "0",
+			  "policyName": "AWSLambdaBasicExecutionRole",
+			  "policyType": "managed"
+			}
+		  },
+		  {
+			"resource": "*",
+			"service": "logs",
+			"effect": "Allow",
+			"action": "logs:PutLogEvents",
+			"source": {
+			  "index": "0",
+			  "policyName": "AWSLambdaBasicExecutionRole",
+			  "policyType": "managed"
+			}
+		  }
+		]
+	  }
+	},
+	"trustedEntities": [
+	  "lambda.amazonaws.com"
+	]
+  }
